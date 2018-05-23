@@ -20,7 +20,6 @@ public:
     void addNeighbour(Vertex* v) { neighbours.push_back(v); };
 };
 
-
 class BFS {
 public:
     void bfs(Vertex* source) {
@@ -49,7 +48,6 @@ public:
         cout << endl;
     }
 };
-
 
 int main() {
     Vertex v1 = Vertex(1);
