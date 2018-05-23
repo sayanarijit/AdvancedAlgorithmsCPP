@@ -22,33 +22,32 @@ public:
 
 
 class BFS {
-    public:
-        void bfs(Vertex* source) {
+public:
+    void bfs(Vertex* source) {
+        queue<Vertex*> vqueue;
 
-            queue<Vertex*> vqueue;
+        (*source).setVisited(true);
+        vqueue.push(source);
 
-            (*source).setVisited(true);
-            vqueue.push(source);
+        while ( ! vqueue.empty() ) {
 
-            vector<Vertex*>::iterator itr;
+            Vertex* vertex = vqueue.front();
+            vqueue.pop();
+            (*vertex).setVisited(true);
 
-            while (!vqueue.empty()) {
+            cout << (*vertex).getData() << " ";
 
-                Vertex* vertex = vqueue.front();
-                vqueue.pop();
-                (*vertex).setVisited(true);
-
-                cout << (*vertex).getData() << " ";
-
-                vector<Vertex*> neighbours = (*vertex).getNeighbours();
-                for (itr = neighbours.begin(); itr != neighbours.end(); ++itr) {
-                    if (!(*itr)->isVisited()) {
-                        vqueue.push(*itr);
-                    };
-                }
+            vector<Vertex*> neighbours = (*vertex).getNeighbours();
+            for (vector<Vertex *>::iterator itr = neighbours.begin();
+                itr != neighbours.end(); ++itr) {
+                if ( ! (*itr)->isVisited() ) {
+                    vqueue.push(*itr);
+                };
             }
-            cout << endl;
+            (*vertex).setVisited(false);
         }
+        cout << endl;
+    }
 };
 
 
