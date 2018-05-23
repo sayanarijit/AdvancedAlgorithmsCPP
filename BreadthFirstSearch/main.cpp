@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -20,14 +21,47 @@ public:
 };
 
 
+class BFS {
+    public:
+        void bfs(Vertex* source) {
+
+            queue<Vertex*> vqueue;
+
+            (*source).setVisited(true);
+            vqueue.push(source);
+
+            vector<Vertex*>::iterator itr;
+
+            while (!vqueue.empty()) {
+
+                Vertex* vertex = vqueue.back();
+                vqueue.pop();
+                (*vertex).setVisited(true);
+
+                cout << (*vertex).getData() << endl;
+
+                vector<Vertex*> neighbours = (*vertex).getNeighbours();
+                for (itr = neighbours.begin(); itr != neighbours.end(); ++itr) {
+                    if (!(*itr)->isVisited()) {
+                        vqueue.push(*itr);
+                    };
+                }
+            }
+        }
+};
+
+
 int main() {
     Vertex v1 = Vertex(1);
     Vertex v2 = Vertex(2);
-    v1.addNeighbour(&v2);
-    
-    vector<Vertex*> n = v1.getNeighbours();
-    vector<Vertex*>::iterator it;
+    Vertex v3 = Vertex(3);
+    Vertex v4 = Vertex(4);
+    Vertex v5 = Vertex(5);
 
-    for (it = n.begin(); it != n.end(); ++it)
-        cout << (*it)->getData();
+    v1.addNeighbour(&v2);
+    v1.addNeighbour(&v4);
+    v4.addNeighbour(&v5);
+    v2.addNeighbour(&v3);
+
+    BFS().bfs(&v1);
 }
