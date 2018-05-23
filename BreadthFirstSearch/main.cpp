@@ -34,11 +34,11 @@ class BFS {
 
             while (!vqueue.empty()) {
 
-                Vertex* vertex = vqueue.back();
+                Vertex* vertex = vqueue.front();
                 vqueue.pop();
                 (*vertex).setVisited(true);
 
-                cout << (*vertex).getData() << endl;
+                cout << (*vertex).getData() << " ";
 
                 vector<Vertex*> neighbours = (*vertex).getNeighbours();
                 for (itr = neighbours.begin(); itr != neighbours.end(); ++itr) {
@@ -47,6 +47,7 @@ class BFS {
                     };
                 }
             }
+            cout << endl;
         }
 };
 
