@@ -4,62 +4,49 @@
 
 using namespace std;
 
-class Vertex {
-private:
+struct Vertex {
     int data;
     bool visited;
     vector<Vertex *> neighbours;
-public:
     Vertex(int d) { data = d; };
-
-    int getData() { return data; };
-    bool isVisited() { return visited; };
-    vector<Vertex *> getNeighbours() { return neighbours; };
-
-    void setVisited(bool v) { visited = v; };
-    void addNeighbour(Vertex *v) { neighbours.push_back(v); };
 };
 
-class DFS {
-public:
+struct DFS {
     void dfsNormal(Vertex* source) {
         stack<Vertex*> vstack;
 
-        (*source).setVisited(true);
+        source->visited = true;
         vstack.push(source);
         
         while( ! vstack.empty() ) {
             Vertex* vertex = vstack.top();
             vstack.pop();
             
-            (*vertex).setVisited(true);
-            cout << (*vertex).getData() << " ";
+            vertex->visited = true;
+            cout << vertex->data << " ";
 
-            vector<Vertex*> neighbours = (*vertex).getNeighbours();
-            for (vector<Vertex*>::iterator itr = neighbours.begin();
-                itr != neighbours.end(); ++itr) {
-                if ( ! (*itr)->isVisited() ) {
+            for (vector<Vertex*>::iterator itr = vertex->neighbours.begin();
+                itr != vertex->neighbours.end(); ++itr) {
+                if ( ! (*itr)->visited ) {
                     vstack.push(*itr);
                 }
             }
-            (*vertex).setVisited(false);
+            vertex->visited = false;
         }
         cout << endl;
     }
 
     void dfsRecursive(Vertex* source) {
-        (*source).setVisited(true);
-        cout << (*source).getData() << " ";
+        source->visited = true;
+        cout << source->data << " ";
 
-        vector<Vertex*> neighbours = (*source).getNeighbours();
-
-        for (vector<Vertex*>::iterator itr = neighbours.begin();
-            itr != neighbours.end(); ++itr) {
-            if ( ! (*itr)->isVisited() ) {
+        for (vector<Vertex*>::iterator itr = source->neighbours.begin();
+            itr != source->neighbours.end(); ++itr) {
+            if ( ! (*itr)->visited ) {
                 dfsRecursive(*itr);
             }
         }
-        (*source).setVisited(false);
+        source->visited = false;
     }
 };
 
@@ -70,12 +57,13 @@ int main() {
     Vertex v4 = Vertex(4);
     Vertex v5 = Vertex(5);
 
-    v1.addNeighbour(&v2);
-    v1.addNeighbour(&v3);
-    v3.addNeighbour(&v4);
-    v4.addNeighbour(&v5);
+    v1.neighbours.push_back(&v2);
+    v1.neighbours.push_back(&v3);
+    v3.neighbours.push_back(&v4);
+    v4.neighbours.push_back(&v5);
 
     DFS dfs = DFS();
     dfs.dfsNormal(&v1);
     dfs.dfsRecursive(&v1);
+    return 0;
 }
