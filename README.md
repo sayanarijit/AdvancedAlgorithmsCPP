@@ -3,7 +3,7 @@
 ### Graph traversing
 
 * [Breadth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/BreadthFirstSearch/notes.md)
-* [Depth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/DepthFirstSearch/nodes.md)
+* [Depth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/DepthFirstSearch/notes.md)
 
 ### Finding shortest path
 
