@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,21 +7,16 @@ struct Vertex;
 struct Edge {
     double cost;
     Vertex* target;
-    Edge(Vertex* t, double c) {
-        target = t; cost = c;
-    }
+    Edge(Vertex* target, double cost):
+        target(target), cost(cost) {};
 };
 
 struct Vertex {
     int id;
-    double distance;
-    Vertex* parent;
+    double distance = numeric_limits<double>::max();
+    Vertex* parent = NULL;
     vector<Edge*> edges;
-    Vertex(int i) {
-        id = i;
-        parent = NULL;
-        distance = numeric_limits<double>::max();
-    }
+    Vertex(int id): id(id) {};
 };
 
 struct CompareVertex {
@@ -76,7 +68,7 @@ int main() {
 
     ShortestPath shortestPath;
     shortestPath.computePaths(vList[0]);
-    vector<int> result = shortestPath.getShortestPathTo(vList[2]);
+    auto result = shortestPath.getShortestPathTo(vList[2]);
 
     for(auto itr : result) {
         cout << itr << " ";

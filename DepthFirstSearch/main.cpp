@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <stack>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -8,7 +6,7 @@ struct Vertex {
     int data;
     bool visited;
     vector<Vertex *> neighbours;
-    Vertex(int d) { data = d; };
+    Vertex(int data): data(data) {};
 };
 
 struct DFS {
@@ -39,7 +37,6 @@ struct DFS {
         for (auto itr : source->neighbours)
             if ( ! itr->visited )
                 dfsRecursive(itr);
-        source->visited = false;
     }
 };
 
@@ -57,6 +54,11 @@ int main() {
 
     DFS dfs = DFS();
     dfs.dfsNormal(&v1);
+    
+    v1.visited = false; v2.visited = false; v3.visited = false;
+    v4.visited = false; v5.visited = false;
+
     dfs.dfsRecursive(&v1);
+    
     return 0;
 }

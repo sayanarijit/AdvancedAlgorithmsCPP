@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -8,7 +6,7 @@ struct Vertex {
     int data;
     bool visited;
     vector<Vertex*> neighbours;
-    Vertex(int d) { data = d; };
+    Vertex(int data): data(data) {};
 };
 
 struct BFS {

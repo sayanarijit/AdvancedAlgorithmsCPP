@@ -1,6 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,16 +8,15 @@ struct Edge {
     double cost;
     Vertex* left;
     Vertex* right;
-    Edge(Vertex* l, Vertex* r, double c) {
-        left = l; right = r; cost = c;
-    }
+    Edge(Vertex* left, Vertex* right, double cost):
+        left(left), right(right), cost(cost) {};
 };
 
 struct Vertex {
     int id;
     double height;
-    Vertex* parent;
-    Vertex(int i) { id = i; parent = NULL; }
+    Vertex* parent = NULL;
+    Vertex(int id): id(id) {};
 };
 
 Vertex* find(Vertex* v) {
@@ -50,10 +47,11 @@ struct Kruskal {
 
     void spanningTree(vector<Edge*> edges) {
         minimumCost = 0;
-        mst.erase(mst.begin(), mst.end());
+        mst = {};
 
-        sort(edges.begin(), edges.end(),
-             [](Edge *e1, Edge *e2) -> bool { return e1->cost < e2->cost; });
+        sort(edges.begin(), edges.end(), [](auto *e1, auto *e2)->bool {
+            return e1->cost < e2->cost;
+        });
 
         for (auto itr : edges) {
             Vertex* rootLeft = find(itr->left);
