@@ -41,7 +41,7 @@ void doUnion(Vertex* v1, Vertex* v2) {
     }
 }
 
-struct Kruskal {
+struct Algorithm {
     double minimumCost;
     vector<Edge *> mst;
 
@@ -86,7 +86,7 @@ int main() {
     edges.push_back(new Edge(vList[5], vList[7], double(3)));
     edges.push_back(new Edge(vList[6], vList[7], double(6)));
 
-    Kruskal kruskal = Kruskal();
+    Algorithm kruskal;
     kruskal.spanningTree(edges);
 
     for (auto itr : kruskal.mst)

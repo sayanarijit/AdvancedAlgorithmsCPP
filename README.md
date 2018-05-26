@@ -12,3 +12,4 @@
 ### Spanning trees
 
 * [Kruskal Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/KruskalAlgorithm/notes.md)
+* [Prim's Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/PrimAlgorithm/notes.md)
