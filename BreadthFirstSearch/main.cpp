@@ -20,19 +20,15 @@ struct BFS {
 
         while ( ! vqueue.empty() ) {
 
-            Vertex* vertex = vqueue.front();
+            auto vertex = vqueue.front();
             vqueue.pop();
             vertex->visited = true;
 
             cout << vertex->data << " ";
 
-            for (vector<Vertex *>::iterator itr = vertex->neighbours.begin();
-                itr != vertex->neighbours.end(); ++itr) {
-                if ( ! (*itr)->visited ) {
-                    vqueue.push(*itr);
-                };
-            }
-            vertex->visited = false;
+            for (auto itr : vertex->neighbours)
+                if ( ! itr->visited )
+                    vqueue.push(itr);
         }
         cout << endl;
     }

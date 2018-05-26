@@ -19,19 +19,15 @@ struct DFS {
         vstack.push(source);
         
         while( ! vstack.empty() ) {
-            Vertex* vertex = vstack.top();
+            auto vertex = vstack.top();
             vstack.pop();
             
             vertex->visited = true;
             cout << vertex->data << " ";
 
-            for (vector<Vertex*>::iterator itr = vertex->neighbours.begin();
-                itr != vertex->neighbours.end(); ++itr) {
-                if ( ! (*itr)->visited ) {
-                    vstack.push(*itr);
-                }
-            }
-            vertex->visited = false;
+            for (auto itr : vertex->neighbours)
+                if ( ! itr->visited )
+                    vstack.push(itr);
         }
         cout << endl;
     }
@@ -40,12 +36,9 @@ struct DFS {
         source->visited = true;
         cout << source->data << " ";
 
-        for (vector<Vertex*>::iterator itr = source->neighbours.begin();
-            itr != source->neighbours.end(); ++itr) {
-            if ( ! (*itr)->visited ) {
-                dfsRecursive(*itr);
-            }
-        }
+        for (auto itr : source->neighbours)
+            if ( ! itr->visited )
+                dfsRecursive(itr);
         source->visited = false;
     }
 };

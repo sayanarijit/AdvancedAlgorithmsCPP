@@ -19,13 +19,12 @@ struct Vertex {
     int id;
     double height;
     Vertex* parent;
-    Vertex(int i) {
-        id = i; parent = NULL;
-    }
+    Vertex(int i) { id = i; parent = NULL; }
 };
 
 Vertex* find(Vertex* v) {
-    if (v->parent == NULL) { return v; }
+    if (v->parent == NULL)
+        return v;
     v->parent = find(v->parent);
     return v->parent;
 }
@@ -33,12 +32,13 @@ Vertex* find(Vertex* v) {
 void doUnion(Vertex* v1, Vertex* v2) {
     Vertex* root1 = find(v1);
     Vertex* root2 = find(v2);
-    if ( root1 == root2 ) { return; }
-    if ( root1->height > root2->height ) {
+    if ( root1 == root2 )
+        return;
+    if ( root1->height > root2->height )
         root2->parent = root1;
-    } else if( root2->height > root1->height ) {
+    else if( root2->height > root1->height )
         root1->parent = root2;
-    } else {
+    else {
         root2->parent = root1;
         root1->height++;
     }
@@ -55,13 +55,13 @@ struct Kruskal {
         sort(edges.begin(), edges.end(),
              [](Edge *e1, Edge *e2) -> bool { return e1->cost < e2->cost; });
 
-        for (vector<Edge*>::iterator i = edges.begin(); i != edges.end(); ++i) {
-            Vertex* rootLeft = find((*i)->left);
-            Vertex* rootRight = find((*i)->right);
+        for (auto itr : edges) {
+            Vertex* rootLeft = find(itr->left);
+            Vertex* rootRight = find(itr->right);
             if ( rootLeft != rootRight ) {
-                mst.push_back(*i);
+                mst.push_back(itr);
                 doUnion(rootLeft, rootRight);
-                minimumCost += (*i)->cost;
+                minimumCost += itr->cost;
             }
         }
     }
@@ -69,9 +69,8 @@ struct Kruskal {
 
 int main() {
     vector<Vertex*> vList;
-    for (int i=1; i<9; i++) {
+    for (int i=1; i<9; i++)
         vList.push_back(new Vertex(i));
-    }
 
     vector<Edge*> edges;
     edges.push_back(new Edge(vList[0], vList[1], double(1)));
@@ -92,9 +91,8 @@ int main() {
     Kruskal kruskal = Kruskal();
     kruskal.spanningTree(edges);
 
-    for (vector<Edge *>::iterator i = kruskal.mst.begin(); i != kruskal.mst.end(); ++i) {
-        cout << (*i)->left->id << " " << (*i)->right->id << " -- ";
-    }
+    for (auto itr : kruskal.mst)
+        cout << itr->left->id << " " << itr->right->id << " -- ";
     cout << endl;
 
     return 0;

@@ -38,12 +38,12 @@ struct ShortestPath {
         pq.push(source);
 
         while( ! pq.empty() ) {
-            Vertex* vertex = pq.top();
+            auto vertex = pq.top();
             pq.pop();
 
-            for(vector<Edge*>::iterator i = vertex->edges.begin(); i != vertex->edges.end(); ++i) {
-                Vertex* target = (*i)->target;
-                double newCost = vertex->distance + (*i)->cost;
+            for(auto itr : vertex->edges) {
+                auto target = itr->target;
+                auto newCost = vertex->distance + itr->cost;
                 if (target->distance > newCost) {
                     target->distance = newCost;
                     target->parent = vertex;
@@ -54,7 +54,7 @@ struct ShortestPath {
     }
 
     vector<int> getShortestPathTo(Vertex* target) {
-        Vertex* vertex = target;
+        auto vertex = target;
         vector<int> result;
         while( vertex != NULL ) {
             result.push_back(vertex->id);
@@ -78,8 +78,8 @@ int main() {
     shortestPath.computePaths(vList[0]);
     vector<int> result = shortestPath.getShortestPathTo(vList[2]);
 
-    for(vector<int>::iterator i = result.begin(); i != result.end(); ++i) {
-        cout << *i << " ";
+    for(auto itr : result) {
+        cout << itr << " ";
     }
     cout << endl;
 }
