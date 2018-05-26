@@ -23,7 +23,7 @@ struct CompareVertex {
     bool operator()(Vertex* v1, Vertex* v2) { return v1->distance < v2->distance; }
 };
 
-struct ShortestPath {
+struct Algorithm {
     void computePaths(Vertex* source) {
         source->distance = 0;
         priority_queue<Vertex*, vector<Vertex*>, CompareVertex> pq;
@@ -66,7 +66,7 @@ int main() {
     vList[0]->edges.push_back(new Edge(vList[2], 1));
     vList[1]->edges.push_back(new Edge(vList[2], 1));
 
-    ShortestPath shortestPath;
+    Algorithm shortestPath;
     shortestPath.computePaths(vList[0]);
     auto result = shortestPath.getShortestPathTo(vList[2]);
 
