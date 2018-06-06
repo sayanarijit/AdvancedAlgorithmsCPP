@@ -2,6 +2,13 @@
     "files.associations": {
         "deque": "cpp",
         "vector": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp",
+        "ostream": "cpp"
     }
 }

@@ -1,15 +1,21 @@
 # Advanced Algorithms C++
 
-### Graph traversing
+### Graph algorithms
 
-* [Breadth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/BreadthFirstSearch/notes.md)
-* [Depth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/DepthFirstSearch/notes.md)
+* Graph traversing
+   * [Breadth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/BreadthFirstSearch/notes.md)
+   * [Depth First Search](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/DepthFirstSearch/notes.md)
 
-### Finding shortest path
+*  Finding shortest path
+   * [Dijkstra Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/DijkstraAlgorithm/notes.md)
 
-* [Dijkstra Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/DijkstraAlgorithm/notes.md)
+* Spanning trees
+   * [Kruskal Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/KruskalAlgorithm/notes.md)
+   * [Prim's Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/PrimAlgorithm/notes.md)
 
-### Spanning trees
+### Dynamic programming
 
-* [Kruskal Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/KruskalAlgorithm/notes.md)
-* [Prim's Algorithm](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/PrimAlgorithm/notes.md)
+* [Fibonacci](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/Fibonacci/main.cpp)
+* [Longest increasing sub-sequence](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/LongestIncreasingSubSequence/main.cpp)
+* [Longest common sub-sequence](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/LongestCommonSubSequence/main.cpp)
+* [Ways to score](https://github.com/sayanarijit/AdvancedAlgorithmsCPP/blob/master/WaysToScore/main.cpp)
