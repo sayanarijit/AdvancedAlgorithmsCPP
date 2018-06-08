@@ -2,7 +2,16 @@
 
 using namespace std;
 
-long longestIncreasingSubSequence(vector<int> arr) {
+// Recursive
+long lisRecursive(vector<int> arr, int i = -1) {
+    if (i == -1) i = arr.size()-1;
+    if (i == 0) return 1;
+    if (arr[i] > arr[i-1]) return lisRecursive(arr, i-1) + 1;
+    return lisRecursive(arr, i-1);
+}
+
+// Tabulation
+long lisTabulation(vector<int> arr) {
     vector<int> table(arr.size(), 1);
     int i, j;
     for (i = 1; i < arr.size(); i++)
@@ -15,7 +24,8 @@ long longestIncreasingSubSequence(vector<int> arr) {
 int main() {
     vector<int> arr = {1, 6, 2, 8, 3, 6, 4, 9};
 
-    long result = longestIncreasingSubSequence(arr);
-    cout << result << endl;
+    cout << lisRecursive(arr) << endl;
+    cout << lisTabulation(arr) << endl;
+
     return 0;
 }

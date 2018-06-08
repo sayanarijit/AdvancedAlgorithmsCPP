@@ -2,7 +2,14 @@
 
 using namespace std;
 
-long fibonacci(int x, int y, int n) {
+// Recursive
+long fibonacciRecursive(long x, long y, int n) {
+    if (n == 2) return y;
+    return fibonacciRecursive(y, x+y, n-1);
+}
+
+// Tabulation
+long fibonacciTabulation(int x, int y, int n) {
     vector<long> result(n);
     result[0] = x; result[1] = y;
     for (int i = 2; i < n; i++) {
@@ -12,6 +19,8 @@ long fibonacci(int x, int y, int n) {
 }
 
 int main() {
-    cout << fibonacci(1, 2, 5) << endl;
+    cout << fibonacciRecursive(1, 2, 5) << endl;
+    cout << fibonacciTabulation(1, 2, 5) << endl;
+
     return 0;
 }
